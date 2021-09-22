@@ -1,12 +1,13 @@
-package guru.springframework;
+package com.ank.springboot.recepie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Spring5RecipeAppApplication {
+public class RecepieApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Spring5RecipeAppApplication.class, args);
+		SpringApplication.run(RecepieApplication.class, args);
 	}
+
 }
