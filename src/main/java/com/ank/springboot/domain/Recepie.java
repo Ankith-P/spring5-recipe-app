@@ -1,6 +1,7 @@
 package com.ank.springboot.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,15 +20,19 @@ public class Recepie {
     private String soruce;
     private String url;
     private String  directions;
-    //todo
     @Lob
     private Byte[] Image;
     // if recepie is deleted, all the related incredients in the table are also deleted using cascade
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recepie")//property on the child class
-    private  Set<Ingredient> ingredients;
-
+    private  Set<Ingredient> ingredients=new HashSet<>();
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+    @Enumerated(value=EnumType.STRING)//default uses ordinal value. to use string, we need to specify this
+    private Difficulty difficulty;
+    @ManyToMany
+    @JoinTable(name = "recepie_category",joinColumns = @JoinColumn(name="recepie_id"),
+            inverseJoinColumns = @JoinColumn(name="category_id"))
+    Set<Category> categories;
 
     public Long getId() {
         return id;
@@ -115,5 +120,21 @@ public class Recepie {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
