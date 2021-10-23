@@ -12,27 +12,27 @@ public class Notes {
         this.id = id;
     }
 
-    public Recepie getRecepie() {
-        return recepie;
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setRecepie(Recepie recepie) {
-        this.recepie = recepie;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
-    public String getRecepieNotes() {
-        return recepieNotes;
+    public String getRecipeNotes() {
+        return recipeNotes;
     }
 
-    public void setRecepieNotes(String recepieNotes) {
-        this.recepieNotes = recepieNotes;
+    public void setRecipeNotes(String recipeNotes) {
+        this.recipeNotes = recipeNotes;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToOne
-    private Recepie recepie;
+    private Recipe recipe;
     @Lob
-    private String recepieNotes;
+    private String recipeNotes;
 }

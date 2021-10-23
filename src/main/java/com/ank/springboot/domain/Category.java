@@ -1,6 +1,7 @@
 package com.ank.springboot.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,7 +11,7 @@ public class Category {
     private Long id;
     private String description;
     @ManyToMany(mappedBy = "categories")
-    private Set<Recepie> recepies;
+    private Set<Recipe> recipes=new HashSet<>();
 
     public Long getId() {
         return id;
@@ -27,12 +28,12 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-    @ManyToMany(mappedBy = "categories")
-    public Set<Recepie> getRecepies() {
-        return recepies;
+
+    public Set<Recipe> getRecipes() {
+        return recipes;
     }
 
-    public void setRecepies(Set<Recepie> recepies) {
-        this.recepies = recepies;
+    public void setRecipes(Set<Recipe> recipes) {
+        this.recipes = recipes;
     }
 }

@@ -8,7 +8,7 @@ import java.util.Set;
  *
  */
 @Entity
-public class Recepie {
+public class Recipe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,20 +19,21 @@ public class Recepie {
     private Integer servings;
     private String soruce;
     private String url;
+    @Lob
     private String  directions;
     @Lob
     private Byte[] Image;
     // if recepie is deleted, all the related incredients in the table are also deleted using cascade
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recepie")//property on the child class
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")//property on the child class
     private  Set<Ingredient> ingredients=new HashSet<>();
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
     @Enumerated(value=EnumType.STRING)//default uses ordinal value. to use string, we need to specify this
     private Difficulty difficulty;
     @ManyToMany
-    @JoinTable(name = "recepie_category",joinColumns = @JoinColumn(name="recepie_id"),
+    @JoinTable(name = "recipe_category",joinColumns = @JoinColumn(name="recipe_id"),
             inverseJoinColumns = @JoinColumn(name="category_id"))
-    Set<Category> categories;
+    Set<Category> categories=new HashSet<>();
 
     public Long getId() {
         return id;
