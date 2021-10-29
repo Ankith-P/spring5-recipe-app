@@ -1,10 +1,12 @@
 package com.ank.springboot.recepie.controllers;
 
 import com.ank.springboot.service.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Slf4j
 @Controller
 public class IndexController {
 /*
@@ -26,6 +28,7 @@ public class IndexController {
     @RequestMapping({"","/","/index","/index.html"})
     public String getIndex(Model model)
     {
+        log.debug("In index page using lombok");
       /*  Optional<Category> categoryOptional=categoryRepository.findByDescription("American");
         Optional<UnitOfMeasure> unitOfMeasureOptional=unitOfMeasureRepository.findByDescription("Pinch");
         System.out.println("Printing values for test DJ ank");
