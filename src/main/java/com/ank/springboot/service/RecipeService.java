@@ -1,6 +1,7 @@
 package com.ank.springboot.service;
 
 
+import com.ank.springboot.commands.RecipeCommand;
 import com.ank.springboot.domain.Recipe;
 
 import java.util.Set;
@@ -12,4 +13,6 @@ import java.util.Set;
 public interface RecipeService {
 
     Set<Recipe> getRecipes();
+    Recipe findById(Long l);
+    RecipeCommand saveRecipeCommand(RecipeCommand command);
 }
